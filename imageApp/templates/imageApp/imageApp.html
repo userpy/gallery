@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} ImageApp {% endblock %}
+{% block body %}
+    <div class="container" >
+         <h1>ImageApp </h1>
+
+    <form action="/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-primary" value="Загрузить">
+    </form>
+    <ul>
+    {% for image in images %}
+        <li>{{image.header}}  <img  src="/media/{{ image.image }}" alt="Italian Trulli"> </li>
+    {% endfor %}
+    </ul>
+    </div>
+
+{% endblock %}
+
